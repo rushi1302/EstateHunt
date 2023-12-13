@@ -24,6 +24,10 @@ export default function App() {
           element: <Signin />,
         },
         {
+          path: "/signup",
+          element: <Signup />,
+        },
+        {
           path: "/profile",
           element: <Profile />,
         },
