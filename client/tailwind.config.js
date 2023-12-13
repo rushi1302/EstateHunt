@@ -6,6 +6,14 @@ export default {
   ],
   theme: {
     extend: {},
-  },
-  plugins: [],
+    colors: {
+
+      header: '#adf7d1',
+      headerOne: '#ffe9e3',
+      headerTwo: '#c4c1e0',
+      headerThree: '#7c73e6'
+
+    },
+    plugins: [],
+  }
 }
