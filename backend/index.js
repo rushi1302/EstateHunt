@@ -3,12 +3,15 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import userRouter from './routes/user.route.js'
 import authRouter from './routes/auth.route.js'
-import { signup } from './controllers/auth.controller.js'
+import cors from 'cors'
 const app = express();
 app.use(express.json())
 dotenv.config()
 
-
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ["GET", "POST", "DELETE", "PATCH"]
+}))
 const URL = process.env.MONGO_URI
 mongoose.connect(URL).then(() => {
     console.log("Connected to mongodb")

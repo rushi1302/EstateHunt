@@ -5,6 +5,9 @@ import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Root from "./pages/Root";
+import Signup1, { action } from "./pages/Signup1";
+import ErrorPage from "./pages/ErrorPage";
+
 export default function App() {
   const router = createBrowserRouter([
     {
@@ -25,7 +28,9 @@ export default function App() {
         },
         {
           path: "/signup",
-          element: <Signup />,
+          element: <Signup1 />,
+          errorElement: <ErrorPage />,
+          action: action,
         },
         {
           path: "/profile",

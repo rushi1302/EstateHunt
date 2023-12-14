@@ -36,6 +36,11 @@ function Header() {
             className={({ isActive }) => (isActive ? "underline" : undefined)}>
             <li className="hidden sm:inline">signin</li>
           </NavLink>
+          <NavLink
+            to="/signup"
+            className={({ isActive }) => (isActive ? "underline" : undefined)}>
+            <li className="hidden sm:inline">signup</li>
+          </NavLink>
         </ul>
       </div>
     </header>
