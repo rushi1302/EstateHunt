@@ -4,12 +4,16 @@ import {
   Link,
   json,
   redirect,
+  useActionData,
   useNavigate,
   useNavigation,
 } from "react-router-dom";
+
 function Signup1() {
   const navigate = useNavigate();
   const navigation = useNavigation();
+  const data = useActionData();
+  console.log(data);
 
   const isSubmitting = navigation.state === "submitting";
   return (
@@ -64,7 +68,7 @@ export async function action({ request }) {
   };
   console.log(newData);
 
-  const response = fetch("/api/auth/signup", {
+  const response = await fetch("/api/auth/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -74,14 +78,9 @@ export async function action({ request }) {
   if (response.status === 200) {
     return redirect("/signin");
   }
-  if (!response.ok) {
-    throw json(
-      { message: "please provide unique username and eamil" },
-      { status: 500 }
-    );
-  }
+  const resdata = await response.json();
 
-  return response;
+  return { resdata, statusCode: response.status };
 }
 
 export default Signup1;

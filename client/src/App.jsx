@@ -6,6 +6,9 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import Root from "./pages/Root";
 import Signup1, { action } from "./pages/Signup1";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./util/http";
+
 import ErrorPage from "./pages/ErrorPage";
 
 export default function App() {
@@ -29,7 +32,6 @@ export default function App() {
         {
           path: "/signup",
           element: <Signup1 />,
-          errorElement: <ErrorPage />,
           action: action,
         },
         {
@@ -39,5 +41,9 @@ export default function App() {
       ],
     },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }

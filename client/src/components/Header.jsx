@@ -7,7 +7,7 @@ function Header() {
         <NavLink to="/">
           <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
             <span className="text-slate-500">Rush's</span>
-            <span className="text-slate-700">Estate</span>
+            <span className="text-slate-700">Estates</span>
           </h1>
         </NavLink>
         <form className="bg-slate-100 p-3 rounded-lg sm:flex justify-between items-center">

@@ -51,6 +51,8 @@ function Signup() {
           id="username"
           name="username"
           onChange={handleChange}
+          required
+          max={5}
         />
         <input
           className="p-3 bg-headerTwo rounded-lg text-lg focus:outline-none"
@@ -59,6 +61,7 @@ function Signup() {
           id="email"
           name="email"
           onChange={handleChange}
+          required
         />
         <input
           className="p-3 bg-headerTwo rounded-lg text-lg focus:outline-none"
@@ -67,6 +70,8 @@ function Signup() {
           id="password"
           name="password"
           onChange={handleChange}
+          required
+          minLength="5"
         />
         <button
           type="submit"
