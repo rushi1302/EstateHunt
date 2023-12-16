@@ -67,7 +67,7 @@ function Signin() {
       <div className="flex gap-3 mt-5 justify-center">
         <p>Don't have an account</p>
         <Link to="/signup">
-          <span className="text-headerThree hover:underline">Sign in</span>
+          <span className="text-headerThree hover:underline">Sign up</span>
         </Link>
       </div>
       {isError && (

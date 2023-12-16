@@ -1,7 +1,13 @@
-import React from "react";
-
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 function Profile() {
-  return <div>Profile - Hey I am Rushikesh</div>;
+  const user = useSelector((state) => state.user.currentUser);
+
+  if (user) {
+    return <>Hello This is profile page of Rushikesh Dhavale</>;
+  } else {
+    return <Navigate to="/signin" />;
+  }
 }
 
 export default Profile;

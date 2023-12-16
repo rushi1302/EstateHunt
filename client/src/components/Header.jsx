@@ -1,6 +1,8 @@
 import { FaSearch } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 function Header() {
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <header className="bg-[#eb2632] shadow-md">
       <div className="flex justify-between items-center w-full mx-auto p-3 sm:max-w-6xl">
@@ -31,15 +33,16 @@ function Header() {
             className={({ isActive }) => (isActive ? "underline " : undefined)}>
             <li className="hidden sm:inline">About</li>
           </NavLink>
-          <NavLink
-            to="/signin"
-            className={({ isActive }) => (isActive ? "underline" : undefined)}>
-            <li className="hidden sm:inline">signin</li>
-          </NavLink>
-          <NavLink
-            to="/signup"
-            className={({ isActive }) => (isActive ? "underline" : undefined)}>
-            <li className="hidden sm:inline">signup</li>
+          <NavLink to="/profile">
+            {user ? (
+              <img
+                className="rounded-full h-7 w-7 object-cover"
+                src={user.photo}
+                alt="profile"
+              />
+            ) : (
+              <li className="hidden sm:inline">signin</li>
+            )}
           </NavLink>
         </ul>
       </div>
