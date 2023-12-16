@@ -12,7 +12,8 @@ export default {
       headerOne: '#ffe9e3',
       headerTwo: '#c4c1e0',
       headerThree: '#7c73e6',
-      error: '#f70776'
+      error: '#f70776',
+      red: '#ff0000'
     },
     plugins: [],
   }

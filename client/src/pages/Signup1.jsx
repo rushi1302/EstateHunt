@@ -8,7 +8,7 @@ import {
   useNavigate,
   useNavigation,
 } from "react-router-dom";
-
+import GoogleAuth from "../components/GoogleAuth";
 function Signup1() {
   const navigate = useNavigate();
   const navigation = useNavigation();
@@ -48,6 +48,7 @@ function Signup1() {
           className="bg-headerThree p-3 rounded-lg text-lg uppercase hover:opacity-80">
           {isSubmitting ? "submitting" : "SignUp"}
         </button>
+        <GoogleAuth />
       </Form>
       <div className="flex gap-3 mt-5 justify-center">
         <p>already have an account</p>

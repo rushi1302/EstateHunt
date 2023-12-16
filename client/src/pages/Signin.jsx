@@ -4,6 +4,7 @@ import { signinStart, signinFail, signinSuccess } from "../../redux/userSlice";
 import { useMutation } from "@tanstack/react-query";
 import { signIn } from "../util/http";
 import { Link, useNavigate } from "react-router-dom";
+import GoogleAuth from "../components/GoogleAuth";
 function Signin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ function Signin() {
           className="bg-headerThree p-3 rounded-lg text-lg uppercase hover:opacity-80">
           Signin
         </button>
+        <GoogleAuth />
       </form>
       <div className="flex gap-3 mt-5 justify-center">
         <p>Don't have an account</p>
