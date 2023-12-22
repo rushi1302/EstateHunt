@@ -71,7 +71,7 @@ function Signin() {
         </Link>
       </div>
       {isError && (
-        <p className="text-center font-extrabold text-xl text-error mt-3 bg-headerTwo">
+        <p className="text-center font-extrabold text-xl text-[red] mt-3 rounded-lg p-2 uppercase bg-[#030000]">
           {error.message}
         </p>
       )}

@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+// import { motion } from "framer-motion";
 
 import {
   getStorage,
@@ -13,6 +14,12 @@ import {
   updateUserStart,
   updateUserSuccess,
   updateUserFailed,
+  deleteUserFailed,
+  deleteUserStart,
+  deleteUserSuccess,
+  logoutUserStart,
+  logoutUserSuccess,
+  logoutUserFailed,
 } from "../../redux/userSlice";
 let status;
 function Profile() {
@@ -101,6 +108,43 @@ function Profile() {
     }
   };
 
+  // to delete the user - rushikesh dhavale
+
+  const handleDelete = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const response = await fetch(`/api/user/delete/${user._id}`, {
+        method: "DELETE",
+      });
+      const data = await response.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailed(data.message));
+        return;
+      }
+      dispatch(deleteUserSuccess());
+    } catch (error) {
+      dispatch(deleteUserFailed(error));
+    }
+  };
+
+  // to logout
+
+  const handleLogout = async () => {
+    try {
+      dispatch(logoutUserStart());
+      const response = await fetch("/api/auth/logout");
+      const data = await response.json();
+
+      if (data.success === false) {
+        dispatch(logoutUserFailed(data.message));
+        return;
+      }
+      dispatch(logoutUserSuccess());
+    } catch (error) {
+      dispatch(logoutUserFailed(data.message));
+    }
+  };
+
   if (user) {
     return (
       <>
@@ -166,9 +210,9 @@ function Profile() {
               </p>
             )}
             {error && <p className="text-red text-center">{error}</p>}
-            <div className="flex justify-between mt-3 text-red text-xl">
-              <span>Delete Account</span>
-              <span>Sign Out</span>
+            <div className="flex justify-between mt-3 text-red text-xl cursor-pointer">
+              <span onClick={handleDelete}>Delete Account</span>
+              <span onClick={handleLogout}>Sign Out</span>
             </div>
           </div>
         }
